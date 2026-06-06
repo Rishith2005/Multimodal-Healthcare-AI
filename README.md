@@ -235,3 +235,9 @@ Open `http://localhost:5173` in your browser.
 ## License
 
 This project is for **academic and educational purposes only**. Not intended for clinical or commercial use.
+
+<img width="1793" height="940" alt="Screenshot 2026-06-07 001748" src="https://github.com/user-attachments/assets/1df90b61-491c-4b3b-9c59-cd9e6420b622" />
+<img width="1596" height="851" alt="Screenshot 2026-06-07 001802" src="https://github.com/user-attachments/assets/c8f95c75-cfd5-4103-a220-b09fffe38959" />
+<img width="1918" height="987" alt="Screenshot 2026-06-07 001914" src="https://github.com/user-attachments/assets/7faf035f-89ca-4dd8-a6c3-50f44c5d67b4" />
+<img width="1898" height="1026" alt="Screenshot 2026-06-07 001935" src="https://github.com/user-attachments/assets/b70579fe-be4e-4db4-91e8-a378b670e58d" />
+
