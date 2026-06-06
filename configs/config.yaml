@@ -1,0 +1,123 @@
+# ==============================================================================
+# Multimodal Healthcare Diagnostic & Patient Risk Prediction System
+# Configuration File
+# ==============================================================================
+
+project:
+  name: "Multimodal Healthcare Diagnostic System"
+  version: "1.0.0"
+  disclaimer: >
+    ACADEMIC PROTOTYPE ONLY. Not intended for clinical use.
+    Datasets are from different patient populations.
+    Fusion uses simulated aligned batches.
+
+# --- Dataset Paths (relative to project root) --------------------------------
+data:
+  xray:
+    root: "../datasets/ChestXRay2017/chest_xray"
+    train_dir: "train"
+    test_dir: "test"
+    image_size: 224
+    num_classes: 2
+    class_names: ["NORMAL", "PNEUMONIA"]
+
+  tabular:
+    csv_path: "../datasets/diabetes.csv"
+    target_column: "Outcome"
+    num_features: 8
+    num_classes: 2
+    class_names: ["No Diabetes", "Diabetes"]
+
+  timeseries:
+    records_dir: "../datasets/set-a/set-a"
+    outcomes_path: "../datasets/Outcomes-a.txt"
+    sequence_length: 48        # hours
+    num_vitals: 12
+    num_classes: 2
+    class_names: ["Survived", "Deceased"]
+    selected_vitals:
+      - "HR"
+      - "RespRate"
+      - "Temp"
+      - "NISysABP"
+      - "NIDiasABP"
+      - "NIMAP"
+      - "GCS"
+      - "Glucose"
+      - "BUN"
+      - "Creatinine"
+      - "HCT"
+      - "Urine"
+
+# --- Model Hyperparameters ----------------------------------------------------
+models:
+  cnn:
+    backbone: "resnet18"
+    pretrained: true
+    embedding_dim: 128
+    dropout: 0.4
+    freeze_backbone: true
+
+  tabular:
+    hidden_dims: [32, 16]
+    embedding_dim: 16
+    dropout: [0.3, 0.2]
+
+  rnn:
+    model_type: "LSTM"
+    hidden_size: 128
+    num_layers: 2
+    embedding_dim: 64
+    dropout: 0.2
+
+  fusion:
+    hidden_dims: [128, 64]
+    dropout: [0.4, 0.3]
+    num_severity_classes: 4
+    severity_names: ["Low", "Moderate", "High", "Critical"]
+
+# --- Training -----------------------------------------------------------------
+training:
+  cnn:
+    epochs: 12
+    batch_size: 16
+    learning_rate: 0.0001
+    weight_decay: 0.001
+    patience: 6
+    label_smoothing: 0.1
+    resume: false
+
+  tabular:
+    epochs: 150
+    batch_size: 16
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    patience: 20
+
+  rnn:
+    epochs: 80
+    batch_size: 32
+    learning_rate: 0.001
+    weight_decay: 0.001
+    patience: 15
+
+  fusion:
+    epochs: 40
+    batch_size: 32
+    learning_rate: 0.0005
+    weight_decay: 0.001
+    patience: 10
+    binary_loss_weight: 0.7
+    severity_loss_weight: 0.3
+
+  general:
+    seed: 42
+    val_split: 0.2
+    num_workers: 0        # set to 0 for Windows compatibility
+    device: "auto"        # auto-detect cuda/cpu
+
+# --- Output Paths -------------------------------------------------------------
+outputs:
+  checkpoints: "outputs/checkpoints"
+  reports: "outputs/reports"
+  plots: "outputs/plots"
