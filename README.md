@@ -98,11 +98,11 @@ multimodal-healthcare/
 
 ## Datasets
 
-| Dataset | Modality | Source | Samples | Task |
-|---------|----------|--------|---------|------|
-| ChestX-ray14 subset | Images (224×224) | Kaggle — Chest X-Ray Images (Pneumonia) | 5,856 | Binary: Normal vs Pneumonia |
-| Pima Indians Diabetes | Tabular (8 features) | UCI / Kaggle — diabetes.csv | 768 | Binary: No Diabetes vs Diabetes |
-| PhysioNet Challenge 2012 | Time-series (48h × 12 vitals) | PhysioNet — set-a | 4,000 patients (3,997 usable) | Binary: Survived vs Deceased |
+| Dataset | Modality | Samples | Task | Link |
+|---------|----------|---------|------|------|
+| Chest X-Ray Images (Pneumonia) | Images (224×224) | 5,856 | Binary: Normal vs Pneumonia | [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) |
+| Pima Indians Diabetes | Tabular (8 features) | 768 | Binary: No Diabetes vs Diabetes | [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database) |
+| PhysioNet Challenge 2012 (Set-A) | Time-series (48h × 12 vitals) | 4,000 patients | Binary: Survived vs Deceased | [PhysioNet](https://physionet.org/content/challenge-2012/1.0.0/) |
 
 ### Dataset Placement
 
